@@ -1,94 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 20px;
+      padding-top: 0;
+      background-color: #f7f9fc;
+      color: #333;
+      min-height: calc(100vh - 50px);
+    }
 
-        h1 {
-            text-align: center;
-        }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
 
-        .form-container {
-            margin-bottom: 20px;
-        }
+    .form-container {
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .form-container input[type="text"] {
-            width: 300px;
-            height: 30px;
-            padding: 5px;
-            font-size: 14px;
-        }
+    form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ddd;
+    }
 
-        .form-container input[type="submit"] {
-            height: 30px;
-            padding: 5px 15px;
-            font-size: 14px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+    label {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #555;
+    }
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+    input[type="text"] {
+      width: calc(100% - 22px);
+      height: 2.5rem;
+      padding: 0 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s;
+    }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
 
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
-</head>
+    input[type="submit"] {
+      width: 100%;
+      height: 2.5rem;
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
 
-<body>
-    <h1>URL Shortener</h1>
+    input[type="submit"]:hover {
+      background-color: #2980b9;
+      transform: scale(1.02);
+    }
 
-    <div class="form-container">
-        <form id="urlForm" method="POST">
-            <label for="urlInput">Enter URL:</label>
-            <input type="text" id="urlInput" name="urlInput" required placeholder="http://this.is.way/too/long?isnt=it">
-            <label for="aliasInput">Enter alias:</label>
-            <input type="text" id="aliasInput" name="aliasInput" required placeholder="http://localhost:3000/......">
-            <input type="submit" value="Shorten URL">
-        </form>
-    </div>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
 
-    <div class="table-container">
-        <table id="urlTable">
-            <tr>
-                <th>Original URL</th>
-                <th>Shortened URL</th>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/cat-backend-nodejs/nodejs-roadmap">https://github.com/cat-backend-nodejs/nodejs-roadmap</a></td>
-                <td><a href="http://localhost:3000/nodejs">http://localhost:3000/nodejs</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://stackoverflow.com/users/11936196/seif-el-din-sweilam">https://stackoverflow.com/users/11936196/seif-el-din-sweilam</a></td>
-                <td><a href="http://localhost:3000/stackoverflow">http://localhost:3000/stackoverflow</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://drive.google.com/drive/u/1/folders/1bpiBKNBd9n0Z79wrZvHVT1KyA9OBROLx">https://drive.google.com/drive/u/1/folders/1bpiBKNBd9n0Z79wrZvHVT1KyA9OBROLx</a></td>
-                <td><a href="http://localhost:3000/himym">http://localhost:3000/himym</a></td>
-            </tr>
-        </table>
-    </div>
-</body>
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #3498db;
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 1rem;
+      color: #777;
+    }
+  </style>
+    </head>
+
+    <body>
+        <h1>URL Shortener</h1>
+
+        <div class="form-container">
+            <form id="urlForm" method="POST" onsubmit="handleFormSubmit(event)">
+                <div>
+                    <label for="urlInput">Enter URL:</label>
+                    <input oninput="handleAlias()" type="text" id="urlInput"
+                        name="url" required placeholder="http://example.com">
+                </div>
+                <div>
+                    <label for="aliasInput">Generated Alias:</label>
+                    <input type="text" id="aliasInput" name="alias" disabled
+                        placeholder="Alias will be generated automatically">
+                </div>
+                <input type="submit" value="Shorten URL">
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table id="urlTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Original URL</th>
+                        <th>Shortened URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><a href="<%= url.url %>"><%= url.url %></a></td>
+                        <td><a href="<%= url.shortUrl %>"><%= url.shortUrl
+                                %></a></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <%- include('../views/footer.ejs'); %>
+        </footer>
+
+        <script>
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const urlInput = document.getElementById('urlInput');
+      const aliasInput = document.getElementById('aliasInput');
+
+      const response = await fetch('/shorten', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: urlInput.value,
+          alias: aliasInput.value
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert(data.message);
+        location.reload();
+      }
+    }
+
+    async function handleAlias() {
+      const aliasInput = document.getElementById('aliasInput');
+      const urlInput = document.getElementById('urlInput');
+      const hash = await generateRandomStringFromLink(urlInput.value);
+      aliasInput.value = hash;
+    }
+
+    function generateRandomStringFromLink(url) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(url);
+      return crypto.subtle.digest('SHA-256', data).then(hashBuffer => {
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex.substring(0, 16);
+      });
+    }
+  </script>
+    </body>
 
 </html>
