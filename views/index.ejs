@@ -8,218 +8,266 @@
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
         <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 20px;
-      padding-top: 0;
-      background-color: #f7f9fc;
-      color: #333;
-      min-height: calc(100vh - 50px);
-    }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
 
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .form-container {
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            padding-top: 0;
+        }
 
-    form {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ddd;
-    }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
 
-    label {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      display: block;
-      color: #555;
-    }
+        .form-container {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    input[type="text"] {
-      width: calc(100% - 22px);
-      height: 2.5rem;
-      padding: 0 10px;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-bottom: 1rem;
-      transition: border-color 0.3s;
-    }
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
 
-    input[type="text"]:focus {
-      border-color: #3498db;
-      outline: none;
-    }
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #555;
+        }
 
-    input[type="submit"] {
-      width: 100%;
-      height: 2.5rem;
-      background-color: #3498db;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            height: 2.5rem;
+            padding: 0 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
 
-    input[type="submit"]:hover {
-      background-color: #2980b9;
-      transform: scale(1.02);
-    }
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 2rem;
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
+        input[type="submit"] {
+            width: 100%;
+            height: 2.5rem;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
 
-    th,
-    td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+            transform: scale(1.02);
+        }
 
-    th {
-      background-color: #3498db;
-      color: #ffffff;
-      font-size: 1.1rem;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            margin-top: 2rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
 
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-    tr:hover {
-      background-color: #f1f1f1;
-    }
+        th {
+            background-color: #3498db;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
 
-    a {
-      color: #3498db;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-    a:hover {
-      color: #2980b9;
-      text-decoration: underline;
-    }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
 
-    footer {
-      text-align: center;
-      margin-top: 1rem;
-      color: #777;
-    }
-  </style>
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            font-size: 1.3rem;
+            background-color: #f1f1f1;
+            color: #888;
+            margin: 15px 20px;
+            border-radius: 8px;
+        }
+
+        .footer-content a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-content a svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+    </style>
     </head>
 
     <body>
-        <h1>URL Shortener</h1>
+        <div class="main-content">
+            <h1>URL Shortener</h1>
 
-        <div class="form-container">
-            <form id="urlForm" method="POST" onsubmit="handleFormSubmit(event)">
-                <div>
-                    <label for="urlInput">Enter URL:</label>
-                    <input oninput="handleAlias()" type="text" id="urlInput"
-                        name="url" required placeholder="http://example.com">
-                </div>
-                <div>
-                    <label for="aliasInput">Generated Alias:</label>
-                    <input type="text" id="aliasInput" name="alias" disabled
-                        placeholder="Alias will be generated automatically">
-                </div>
-                <input type="submit" value="Shorten URL">
-            </form>
-        </div>
+            <div class="form-container">
+                <form id="urlForm" method="POST"
+                    onsubmit="handleFormSubmit(event)">
+                    <div>
+                        <label for="urlInput">Enter URL:</label>
+                        <input oninput="handleAlias()" type="text" id="urlInput"
+                            name="url" required
+                            placeholder="http://example.com">
+                    </div>
+                    <div>
+                        <label for="aliasInput">Generated Alias:</label>
+                        <input type="text" id="aliasInput" name="alias" disabled
+                            placeholder="Alias will be generated automatically">
+                    </div>
+                    <input type="submit" value="Shorten URL">
+                </form>
+            </div>
 
-        <div class="table-container">
-            <table id="urlTable">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Original URL</th>
-                        <th>Shortened URL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% urls.forEach((url, index) => { %>
-                    <tr>
-                        <td><%= index + 1 %></td>
-                        <td><a href="<%= url.url %>"><%= url.url %></a></td>
-                        <td><a href="<%= url.shortUrl %>"><%= url.shortUrl
-                                %></a></td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table id="urlTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Original URL</th>
+                            <th>Shortened URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% urls.forEach((url, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><a href="<%= url.url %>"><%= url.url %></a></td>
+                            <td><a href="<%= url.shortUrl %>"><%= url.shortUrl
+                                    %></a></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <footer>
-            <%- include('../views/footer.ejs'); %>
+            <div class="footer-content">
+                <p>&copy; Copyright 2024 - All rights reserved</p>
+                <a href="https://www.linkedin.com/in/ebrahim-abdelrazik2020"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        data-supported-dps="24x24" fill="currentColor">
+                        <path
+                            d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                    </svg>
+                    Ibrahim Abdelrazik
+                </a>
+            </div>
         </footer>
 
         <script>
-    async function handleFormSubmit(event) {
-      event.preventDefault();
+        async function handleFormSubmit(event) {
+            event.preventDefault();
 
-      const urlInput = document.getElementById('urlInput');
-      const aliasInput = document.getElementById('aliasInput');
+            const urlInput = document.getElementById('urlInput');
+            const aliasInput = document.getElementById('aliasInput');
 
-      const response = await fetch('/shorten', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          url: urlInput.value,
-          alias: aliasInput.value
-        }),
-      });
+            const response = await fetch('/shorten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    url: urlInput.value,
+                    alias: aliasInput.value
+                }),
+            });
 
-      const data = await response.json();
+            const data = await response.json();
 
-      if (data.error) {
-        alert(data.error);
-      } else {
-        alert(data.message);
-        location.reload();
-      }
-    }
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert(data.message);
+                location.reload();
+            }
+        }
 
-    async function handleAlias() {
-      const aliasInput = document.getElementById('aliasInput');
-      const urlInput = document.getElementById('urlInput');
-      const hash = await generateRandomStringFromLink(urlInput.value);
-      aliasInput.value = hash;
-    }
+        async function handleAlias() {
+            const aliasInput = document.getElementById('aliasInput');
+            const urlInput = document.getElementById('urlInput');
+            const hash = await generateRandomStringFromLink(urlInput.value);
+            aliasInput.value = hash;
+        }
 
-    function generateRandomStringFromLink(url) {
-      const encoder = new TextEncoder();
-      const data = encoder.encode(url);
-      return crypto.subtle.digest('SHA-256', data).then(hashBuffer => {
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashHex.substring(0, 16);
-      });
-    }
-  </script>
+        function generateRandomStringFromLink(url) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(url);
+            return crypto.subtle.digest('SHA-256', data).then(hashBuffer => {
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                return hashHex.substring(0, 16);
+            });
+        }
+    </script>
     </body>
 
 </html>
